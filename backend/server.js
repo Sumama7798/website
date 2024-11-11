@@ -19,8 +19,8 @@ app.use("/api/admin", uploadRoutes)
 
 
 app.listen(PORT,() => {
-        console.log("server is running on http://localhost:" + PORT)
-        connectDB()
+    console.log("server is running on http://localhost:" + PORT)
+    connectDB()
 })
 
  
