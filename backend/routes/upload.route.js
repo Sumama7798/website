@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.post("/upload",protectRoute,adminRoute,Upload);
 
-router.get("/getAllPages",protectRoute,adminRoute,getAllPages);
+
 
 router.post("/createPage",protectRoute,adminRoute,createPage);
 
