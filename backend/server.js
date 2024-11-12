@@ -4,6 +4,7 @@ import authRoutes from './routes/auth.route.js'
 import cookieParser from 'cookie-parser';
 import { connectDB } from './lib/db.js';
 import uploadRoutes from './routes/upload.route.js';
+import messageRoutes from './routes/message.route.js';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes)
 app.use("/api/admin", uploadRoutes)
+app.use("/api/message", messageRoutes)
 
 
 app.listen(PORT,() => {
