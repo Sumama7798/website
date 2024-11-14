@@ -1,6 +1,6 @@
 // Navbar.js
 import React, { useState } from 'react';
-import NavbarContent from './Navbar.content.jsx'
+import NavbarContent from './Navbar.content.jsx';
 import './Navbar.css'; // Import the custom CSS file
 
 const Navbar = () => {

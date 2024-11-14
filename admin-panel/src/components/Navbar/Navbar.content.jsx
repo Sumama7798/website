@@ -13,13 +13,41 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
         </Link>
 
         <nav className='flex items-center space-x-4'>
+          <div className='relative inline-block text-left'>
+            <button className='create-page-btn'
+              
+            >
+              Create Page+
+            </button>
+          </div>
+
+          <div className='relative inline-block text-left'>
+            <button className='contact-us-btn'
+              
+            >
+              Contact Us
+            </button>
+          </div>
+
+          <div className='relative inline-block text-left'>
+            <button className='about-us-btn'
+              
+            >
+              About Us
+            </button>
+          </div>
+
+
+
+
+
           {/* Dropdown component */}
           <div className='relative inline-block text-left'>
             <button
               onClick={toggleDropdown}
               className='dropdown-btn'
             >
-              Options↓
+              Services We Offer↓
             </button>
 
             {isDropdownOpen && (
@@ -29,17 +57,17 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
               >
                 <ul className='py-1'>
                   <li>
-                    <a href='#' className='inline-flex px-4 py-2 text-sm hover:bg-emerald-600'>
+                    <a href='#' className='block px-4 py-2 text-sm hover:bg-emerald-600'>
                       Option 1
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='inline-flex px-4 py-2 text-sm hover:bg-emerald-600'>
+                    <a href='#' className='block px-4 py-2 text-sm hover:bg-emerald-600'>
                       Option 2
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='inline-flex px-4 py-2 text-sm hover:bg-emerald-600'>
+                    <a href='#' className='block px-4 py-2 text-sm hover:bg-emerald-600'>
                       Option 3
                     </a>
                   </li>
