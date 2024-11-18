@@ -1,85 +1,50 @@
-// NavbarContent.js
 import React from 'react';
-import { FolderDot, LogOut } from 'lucide-react';
+import { FolderDot, LogOut, Settings, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Dropdown from '../../../../frontend/src/Dropdown/Dropdown.jsx';
 
 const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
   return (
     <header className='navbar'>
       <div className='container'>
-        <Link to='/' className='logo'>
-          <FolderDot className='w-8 h-8 font-bold' />
-          <span>Admin Panel</span>
+
+         <Link to='/' className='logo flex items-center '>
+          <FolderDot className='mr-2 w-8 h-8 font-bold' />
+          <span>   Admin Panel</span>
         </Link>
 
-        <nav className='flex items-center space-x-4'>
-          <div className='relative inline-block text-left'>
-            <button className='create-page-btn'
-              
-            >
-              Create Page+
-            </button>
-          </div>
+        <nav className='flex flex-col justify-between items-start mt-8 space-y-4'>
 
-          <div className='relative inline-block text-left'>
-            <button className='contact-us-btn'
-              
-            >
-              Contact Us
-            </button>
-          </div>
-
-          <div className='relative inline-block text-left'>
-            <button className='about-us-btn'
-              
-            >
-              About Us
-            </button>
-          </div>
+          <button className='home-btn flex items-center'>
+            Home 
+          </button>
 
 
 
+          <button className='create-page-btn flex items-center'>
+            Create Page <Plus className='ml-2' />
+          </button>
 
+          <button className='messages-btn'>
+            Messages
+          </button>
 
-          {/* Dropdown component */}
-          <div className='relative inline-block text-left'>
-            <button
-              onClick={toggleDropdown}
-              className='dropdown-btn'
-            >
-              Services We Offer↓
-            </button>
+          <button className='about-us-btn'>
+            About Us
+          </button>
 
-            {isDropdownOpen && (
-              <div
-                className='dropdown-menu'
-                onMouseLeave={closeDropdown} // Optional: closes when mouse leaves
-              >
-                <ul className='py-1'>
-                  <li>
-                    <a href='#' className='block px-4 py-2 text-sm hover:bg-emerald-600'>
-                      Option 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#' className='block px-4 py-2 text-sm hover:bg-emerald-600'>
-                      Option 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#' className='block px-4 py-2 text-sm hover:bg-emerald-600'>
-                      Option 3
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
+          
+
+          <button  className='settings-dropdown-btn flex items-center'>
+           Settings <Settings className='ml-2 left-1'/>
+          </button>
+
+          
 
           {/* Log Out button */}
-          <Link to='/login' className='logout-btn'>
+          <Link to='/login' className='logout-btn mt-auto flex items-center'>
             <LogOut className='w-6 h-6 text-red-500 hover:text-emerald-400' />
-            
+            <span className='ml-2'>Logout</span>
           </Link>
         </nav>
       </div>
