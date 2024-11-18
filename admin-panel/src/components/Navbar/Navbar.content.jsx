@@ -1,9 +1,9 @@
 import React from 'react';
 import { FolderDot, LogOut, Settings, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Dropdown from '../../../../frontend/src/Dropdown/Dropdown.jsx';
 
-const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
+
+const NavbarContent = () => {
   return (
     <header className='navbar'>
       <div className='container'>
@@ -15,29 +15,29 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
 
         <nav className='flex flex-col justify-between items-start mt-8 space-y-4'>
 
-          <button className='home-btn flex items-center'>
-            Home 
-          </button>
+          <Link to='/' className='home-btn flex items-center'>
+          Home 
+          </Link>
 
 
 
-          <button className='create-page-btn flex items-center'>
+          <Link to='/create-page' className='create-page-btn flex items-center'>
             Create Page <Plus className='ml-2' />
-          </button>
+          </Link>
 
-          <button className='messages-btn'>
+          <Link to='/messages' className='messages-btn'>
             Messages
-          </button>
+          </Link>
 
-          <button className='about-us-btn'>
-            About Us
-          </button>
+          <Link to='/profile' className='about-us-btn'>
+            Profile
+          </Link>
 
           
 
-          <button  className='settings-dropdown-btn flex items-center'>
+          <Link to='/settings'  className='settings-dropdown-btn flex items-center'>
            Settings <Settings className='ml-2 left-1'/>
-          </button>
+          </Link>
 
           
 

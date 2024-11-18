@@ -4,6 +4,9 @@ import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
 
 import Navbar from "./components/Navbar/Navbar"
+import MessagesPage from "./pages/MessagesPage"
+import ProfilePage from "./pages/ProfilePage"
+import SettingsPage from "./pages/SettingsPage"
 
 function App() {
  
@@ -17,15 +20,21 @@ function App() {
 			</div>
 
 
-    <div className="relative z-50 pt-20">
+    <div className="relative">
     < Navbar/>
         <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/signup" element={<SignupPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/messages" element={<MessagesPage/>}/>
+            <Route path="/profile" element={<ProfilePage/>}/>
+            <Route path="/settings" element={<SettingsPage/>}/>
+
       
         </Routes>
       </div>  
+
+
 
 
     </div>
