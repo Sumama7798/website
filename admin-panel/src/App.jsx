@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar"
 import MessagesPage from "./pages/MessagesPage"
 import ProfilePage from "./pages/ProfilePage"
 import SettingsPage from "./pages/SettingsPage"
+import CreatePage from "./pages/CreatePage"
 
 function App() {
  
@@ -29,6 +30,7 @@ function App() {
             <Route path="/messages" element={<MessagesPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/settings" element={<SettingsPage/>}/>
+            <Route path="/create-page" element={<CreatePage/>}/>
 
       
         </Routes>
