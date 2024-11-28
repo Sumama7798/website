@@ -16,7 +16,7 @@ const NavbarContent = () => {
         <nav className='flex flex-col justify-between items-start mt-8 space-y-4'>
 
           <Link to='/' className='home-btn flex items-center'>
-          Home 
+          Dashboard 
           </Link>
 
 
