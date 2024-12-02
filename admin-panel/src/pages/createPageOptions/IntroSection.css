@@ -1,0 +1,34 @@
+.intro-section {
+    padding: 2rem;
+  }
+  
+  .file-input {
+    padding: 0.5rem;
+  }
+  
+  .preview-container {
+    position: relative;
+    height: 100vh;
+  }
+  
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .heading-input {
+    width: 300px;
+  }
+  
+  .preview-btn {
+    cursor: pointer;
+  }
+  
+  h1 {
+    z-index: 1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }

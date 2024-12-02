@@ -31,7 +31,7 @@ const HomePage = () => {
   return (
     <div className="pl-[250px]"> {/* Adjusted padding to make room for the sidebar */}
       <div className='bg-gray-800 box-border h-20 flex items-center justify-between'>
-        <h1 className="text-2xl font-bold justify-center mb-5 pl-5">Welcome to the Admin Panel</h1>
+        <h1 className="text-2xl font-bold text-gray-500 justify-center mb-5 pl-5">Welcome to the Admin Panel</h1>
         
         <div className='inline-block right-0 ml-auto mr-6'>
           <Link to='/messages' className='hover:text-emerald-400 transition duration-300 ease-in-out'>
@@ -39,7 +39,7 @@ const HomePage = () => {
           </div>  
 
           <div>
-          <img onClick={ToggleDropdown}  class="inline-block cursor-pointer right-0 size-10 rounded-full ring-2 mr-3 ml-auto ring-white hover:ring-emerald-400 transition duration-300 ease-in-out"
+          <img onClick={ToggleDropdown}  className="inline-block cursor-pointer right-0 size-10 rounded-full ring-2 mr-3 ml-auto ring-white hover:ring-emerald-400 transition duration-300 ease-in-out"
           src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
 
           {isOpen && (

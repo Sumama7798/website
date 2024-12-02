@@ -8,6 +8,7 @@ import MessagesPage from "./pages/MessagesPage"
 import ProfilePage from "./pages/ProfilePage"
 import SettingsPage from "./pages/SettingsPage"
 import CreatePage from "./pages/CreatePage"
+import IntroSection from "./pages/createPageOptions/IntroSection"
 
 function App() {
  
@@ -30,7 +31,14 @@ function App() {
             <Route path="/messages" element={<MessagesPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/settings" element={<SettingsPage/>}/>
-            <Route path="/create-page" element={<CreatePage/>}/>
+
+            {/* Create Page Routes */}
+            <Route path="/IntroSection" element={<IntroSection/>}/>
+            <Route path="/ServicesSection" element={<CreatePage/>}/>
+            <Route path="/EngagementSection" element={<CreatePage/>}/>
+            <Route path="/IndustriesSection" element={<CreatePage/>}/>
+            <Route path="/ClientsSection" element={<CreatePage/>}/>
+            <Route path="/PortfolioSection" element={<CreatePage/>}/>
 
       
         </Routes>

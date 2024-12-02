@@ -1,9 +1,9 @@
 import React from 'react';
-import { FolderDot, LogOut, Settings, Plus } from 'lucide-react';
+import { FolderDot, LogOut, Settings, Plus,ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-
-const NavbarContent = () => {
+<ChevronDown />
+const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
   return (
     <header className='navbar'>
       <div className='container'>
@@ -21,9 +21,65 @@ const NavbarContent = () => {
 
 
 
-          <Link to='/create-page' className='create-page-btn flex items-center'>
-            Create Page <Plus className='ml-2' />
-          </Link>
+         {/* Dropdown for Create Page */}
+         <div className='relative'>
+            <button
+              onClick={toggleDropdown}
+              className='create-page-btn flex items-center'
+            >
+              Create Page <ChevronDown size={30} className='ml-2' />
+            </button>
+            {isDropdownOpen && (
+              <div
+                className='dropdown  absolute top-full left-full mt-2 w-60  bg-gray-800 shadow-lg rounded-md'
+                onMouseLeave={closeDropdown}
+              >
+                <Link
+                  to='/IntroSection'
+                  className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
+                >
+                 <li><span>Intro Section</span></li>
+                </Link>
+
+                <Link
+                  to='/ServicesSection'
+                  className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
+                >
+                  <li><span>Services Section</span></li>
+                </Link>
+
+                <Link
+                  to='/IndustriesSection'
+                  className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
+                >
+                  <li><span>Industries Section</span></li>
+                </Link>
+
+                <Link
+                  to='/EngagementSection'
+                  className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
+                >
+                  <li><span>Engagement Section</span></li>
+                </Link>
+
+                <Link
+                  to='/ClientsSection'
+                  className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
+                >
+                  <li><span>Clients Section</span></li>
+                </Link>
+
+
+                <Link
+                  to='/PortfolioSection'
+                  className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
+                >
+                  <li><span>Portfolio Section</span></li>
+                </Link>
+
+              </div>
+            )}
+          </div>
 
           <Link to='/messages' className='messages-btn'>
             Messages
