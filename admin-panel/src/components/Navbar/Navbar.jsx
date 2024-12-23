@@ -6,6 +6,16 @@ import './Navbar.css'; // Import the custom CSS file
 const Navbar = () => {
   // State for handling dropdown visibility
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  const collapseNavbar = () => {
+    setIsCollapsed(false);
+  } 
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -17,6 +27,10 @@ const Navbar = () => {
 
   return (
     <NavbarContent
+
+      toggleNavbar={toggleNavbar}
+      isCollapsed={isCollapsed}
+      collapseNavbar={collapseNavbar}
       toggleDropdown={toggleDropdown}
       isDropdownOpen={isDropdownOpen}
       closeDropdown={closeDropdown}

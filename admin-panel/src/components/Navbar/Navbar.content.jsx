@@ -1,22 +1,34 @@
 import React from 'react';
-import { FolderDot, LogOut, Settings, Plus,ChevronDown } from 'lucide-react';
+import { FolderDot, LogOut, Settings, ChevronDown, ChevronLeft, ChevronRight, Gauge, Mail,User,Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 <ChevronDown />
-const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
+const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNavbar, isCollapsed, collapseNavbar }) => {
   return (
-    <header className='navbar'>
-      <div className='container'>
+    <header className={`navbar ${isCollapsed ? 'collapsed' : ''} `} >
+      <div>
+      <div className='container flex items-center justify-between'>
 
          <Link to='/' className='logo flex items-center '>
           <FolderDot className='mr-2 w-8 h-8 font-bold' />
-          <span>   Admin Panel</span>
+
+          {!isCollapsed && <span>Admin Panel</span>}
         </Link>
+
+        {/* Collapse Button */}
+        <button
+            onClick={toggleNavbar}
+            className='collapse-btn ml-2 mr-2 p-2 bg-gray-800 text-white rounded-md'
+          >
+            {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+          </button>
+          </div>
 
         <nav className='flex flex-col justify-between items-start mt-8 space-y-4'>
 
           <Link to='/' className='home-btn flex items-center'>
-          Dashboard 
+          <Gauge className='mr-2 w-8 h-8 font-bold' />
+          {!isCollapsed && <span>Dashboard</span>} 
           </Link>
 
 
@@ -27,7 +39,8 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
               onClick={toggleDropdown}
               className='create-page-btn flex items-center'
             >
-              Create Page <ChevronDown size={30} className='ml-2' />
+              <Layers className='mr-2 w-8 h-8 font-bold'/>
+             {!isCollapsed && <span>Create Page  <ChevronDown size={30} className='ml-2 ' /></span> }    
             </button>
             {isDropdownOpen && (
               <div
@@ -81,30 +94,38 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown }) => {
             )}
           </div>
 
-          <Link to='/messages' className='messages-btn'>
-            Messages
+          <Link to='/messages' className='messages-btn flex items-center'>
+          <Mail className='mr-2 w-8 h-8 font-bold' />
+          {!isCollapsed && <span>Messages</span>}
           </Link>
 
-          <Link to='/profile' className='about-us-btn'>
-            Profile
+          <Link to='/profile' className='about-us-btn flex items-center'>
+          <User  className='mr-2 w-8 h-8 font-bold' />
+          {!isCollapsed && <span>Profile</span>}
           </Link>
 
           
 
           <Link to='/settings'  className='settings-dropdown-btn flex items-center'>
-           Settings <Settings className='ml-2 left-1'/>
+          <Settings   className='mr-2 w-8 h-8 font-bold' />
+          {!isCollapsed && <span>Settings</span>}
           </Link>
 
           
 
           {/* Log Out button */}
           <Link to='/login' className='logout-btn mt-auto flex items-center'>
-            <LogOut className='w-6 h-6 text-red-500 hover:text-emerald-400' />
-            <span className='ml-2'>Logout</span>
+            <LogOut className='mr-2 w-8 h-8 text-red-500 hover:text-emerald-400' />
+            {!isCollapsed && <span className='ml-2'>Logout</span>}  
           </Link>
         </nav>
       </div>
     </header>
+
+
+
+
+      
   );
 };
 

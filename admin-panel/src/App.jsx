@@ -22,7 +22,7 @@ function App() {
 			</div>
 
 
-    <div className="relative">
+    <div className="relative left-auto">
     < Navbar/>
         <Routes>
             <Route path="/" element={<HomePage/>}/>
