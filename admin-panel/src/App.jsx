@@ -9,6 +9,7 @@ import ProfilePage from "./pages/ProfilePage"
 import SettingsPage from "./pages/SettingsPage"
 import CreatePage from "./pages/CreatePage"
 import IntroSection from "./pages/createPageOptions/IntroSection"
+import Header from "./components/Header/Header"
 
 function App() {
  
@@ -24,6 +25,7 @@ function App() {
 
     <div className="relative left-auto">
     < Navbar/>
+    <Header/>
         <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/signup" element={<SignupPage/>}/>
