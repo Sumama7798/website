@@ -7,9 +7,15 @@ import Navbar from "./components/Navbar/Navbar"
 import MessagesPage from "./pages/MessagesPage"
 import ProfilePage from "./pages/ProfilePage"
 import SettingsPage from "./pages/SettingsPage"
-import CreatePage from "./pages/CreatePage"
-import IntroSection from "./pages/createPageOptions/IntroSection"
 import Header from "./components/Header/Header"
+
+import EditHomePage from "./createPages/editHomePage/EditHomePage"
+import EditAboutPage from "./createPages/editAboutPage/EditAboutPage"
+import EdiitBlogPage from "./createPages/editBlogPage/EditBlogPage"
+import EditServicesPage from "./createPages/editServicesPage/EditServicesPage"
+import EditContactPage from "./createPages/editContactPage/EditContactPage"
+import EditFooter from "./createPages/EditFooter/EditFooter"
+
 
 function App() {
  
@@ -35,12 +41,12 @@ function App() {
             <Route path="/settings" element={<SettingsPage/>}/>
 
             {/* Create Page Routes */}
-            <Route path="/IntroSection" element={<IntroSection/>}/>
-            <Route path="/ServicesSection" element={<CreatePage/>}/>
-            <Route path="/EngagementSection" element={<CreatePage/>}/>
-            <Route path="/IndustriesSection" element={<CreatePage/>}/>
-            <Route path="/ClientsSection" element={<CreatePage/>}/>
-            <Route path="/PortfolioSection" element={<CreatePage/>}/>
+            <Route path="/editHomePage" element={<EditHomePage/>}/>
+            <Route path="/editAboutPage" element={<EditAboutPage/>}/>
+            <Route path="/editBlogPage" element={<EdiitBlogPage/>}/>
+            <Route path="/editServicesPage" element={<EditServicesPage/>}/>
+            <Route path="/editContactPage" element={<EditContactPage/>}/>
+            <Route path="/editFooter" element={<EditFooter/>}/>
 
       
         </Routes>

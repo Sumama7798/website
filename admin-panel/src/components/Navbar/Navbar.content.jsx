@@ -48,47 +48,47 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNa
                 onMouseLeave={closeDropdown}
               >
                 <Link
-                  to='/IntroSection'
+                  to='/editHomePage'
                   className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
                 >
-                 <li><span>Intro Section</span></li>
+                 <li><span>HomePage</span></li>
                 </Link>
 
                 <Link
-                  to='/ServicesSection'
+                  to='/editAboutPage'
                   className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
                 >
-                  <li><span>Services Section</span></li>
+                  <li><span>AboutPage</span></li>
                 </Link>
 
                 <Link
-                  to='/IndustriesSection'
+                  to='/editBlogPage'
                   className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
                 >
-                  <li><span>Industries Section</span></li>
+                  <li><span>BlogPage</span></li>
                 </Link>
 
                 <Link
-                  to='/EngagementSection'
+                  to='/editServicesPage'
                   className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
                 >
-                  <li><span>Engagement Section</span></li>
+                  <li><span>ServicesPage</span></li>
                 </Link>
 
                 <Link
-                  to='/ClientsSection'
+                  to='/editContactPage'
                   className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
                 >
-                  <li><span>Clients Section</span></li>
+                  <li><span>ContactPage</span></li>
                 </Link>
-
 
                 <Link
-                  to='/PortfolioSection'
+                  to='/editFooter'
                   className='dropdown-item  px-1 py-4 hover:text-emerald-400 transition duration-300 ease-in-out flex items-center p-3'
                 >
-                  <li><span>Portfolio Section</span></li>
+                  <li><span>Footer</span></li>
                 </Link>
+
 
               </div>
             )}

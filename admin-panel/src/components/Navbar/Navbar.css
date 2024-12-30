@@ -2,7 +2,7 @@
 .navbar {
   font-weight: bolder;
   font-size: larger;
-  position: relative;
+  position: sticky;
   float: left;
   top: 0;
   left: 0;
