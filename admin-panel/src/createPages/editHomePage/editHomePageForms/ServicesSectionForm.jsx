@@ -1,33 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useCardHook } from '../../../hooks/useCardHook.js';
 
 const ServicesSectionForm = () => {
-  return (
-    <div className=''>
-    <div className='flex flex-col justify-center items-center'>
-        <div className='text-3xl font-bold'>Services Section</div>
-        <div className='text-sm text-gray-500'>Edit the Card for the Services Section</div>
-        <form className='flex flex-col justify-center items-center bg-slate-500 rounded-md p-4'>
-            <div className='flex flex-col justify-center items-center'>
-                <div className='text-sm text-black'>Background Img</div>
-                <input className='bg-gray-700 rounded-md p-2 w-80' type="text" placeholder='Background Img' />
-            </div>
-            <div className='flex flex-col justify-center items-center'>
-                <div className='text-sm text-black'>Heading</div>
-                <input className='bg-gray-700 rounded-md p-2 w-80' type="text" placeholder='Heading' />
-            </div>
-            <div className='flex flex-col justify-center items-center'>
-                <div className='text-sm text-black'>Discription</div>
-                <input className='bg-gray-700 rounded-md p-2 w-80 h-48 items-start' type="text" placeholder='Discription' />
-            </div>
-            <button className='bg-blue-500 rounded-md p-2 w-80 mt-4'>Create Card</button>
-            
-            
-        </form>
+    const [servicesCard, setServicesCard] = useState({
+        image: '',
+        heading: '',
+        description: '',
+    });
 
-    </div>
+    const { createCard } = useCardHook();
 
-</div>
-  )
-}
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-export default ServicesSectionForm
+        // Add hardcoded fields before submission
+        const cardWithDefaults = {
+            ...servicesCard,
+            page: 'homePage',
+            section: 'services section',
+        };
+
+        await createCard(cardWithDefaults);
+        setServicesCard({
+            image: '',
+            heading: '',
+            description: '',
+        });
+    };
+
+    return (
+        <div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="text-3xl font-bold">Services Section</div>
+                <div className="text-sm text-gray-500">Edit the Card for the Services Section</div>
+
+                <form
+                    onSubmit={handleSubmit}
+                    className="flex flex-col justify-center items-center bg-slate-500 rounded-md p-4"
+                >
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="text-sm text-black">Image</div>
+                        <input
+                            className="bg-gray-700 rounded-md p-2 w-80"
+                            type="text"
+                            placeholder="Image URL"
+                            id="image"
+                            value={servicesCard.image}
+                            onChange={(e) =>
+                                setServicesCard({ ...servicesCard, image: e.target.value })
+                            }
+                        />
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="text-sm text-black">Heading</div>
+                        <input
+                            className="bg-gray-700 rounded-md p-2 w-80"
+                            type="text"
+                            placeholder="Heading"
+                            id="heading"
+                            value={servicesCard.heading}
+                            onChange={(e) =>
+                                setServicesCard({ ...servicesCard, heading: e.target.value })
+                            }
+                        />
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="text-sm text-black">Description</div>
+                        <textarea
+                            className="bg-gray-700 rounded-md p-2 w-80 h-48"
+                            placeholder="Description"
+                            id="description"
+                            value={servicesCard.description}
+                            onChange={(e) =>
+                                setServicesCard({ ...servicesCard, description: e.target.value })
+                            }
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="bg-blue-500 rounded-md p-2 w-80 mt-4"
+                    >
+                        Create Card
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default ServicesSectionForm;

@@ -25,13 +25,20 @@ const EditHomePage = () => {
     <div className='pl-auto min-h-screen relative bg-gray-900 text-white overflow-hidden'>
         <div className='relative left-auto container'>
         <motion.div className='text-4xl  font-bold mb-8 mt-4 text-center text-emerald-400'
-        initial={{opacity: 0 ,y: -20}}
-        animate={{opacity: 1 ,y: 0}}
-        transition={{duration: 0.8}}
+                initial={{opacity: 0 ,y: -20}}
+                animate={{opacity: 1 ,y: 0}}
+                transition={{duration: 0.8}}
         >
             Edit Home Page
 
         </motion.div>
+
+        <motion.div
+				className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.2 }}
+		>
 
         <div className='flex justify-center mb-8'>
 
@@ -52,7 +59,7 @@ const EditHomePage = () => {
         {activeTab === 'services' && <ServicesSectionForm/>}
         {activeTab === 'projects' && <ProjectsSectionForm/>}
         {activeTab === 'banner1' && <Banner1Form/>}
-        
+        </motion.div>
             
         </div> 
 

@@ -1,11 +1,23 @@
 import mongoose from 'mongoose';
 
-const pageSchema = new mongoose.Schema({
-    title: {
+const cardSchema = new mongoose.Schema({
+    heading: {
         type: String,
         required: true,
     },
-    content: {
+    image: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    page: {
+        type: String,
+        required: true,
+    },    
+    section: {
         type: String,
         required: true,
     },
@@ -20,4 +32,4 @@ const pageSchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model('Page', pageSchema);
+export default mongoose.model('Card', cardSchema);

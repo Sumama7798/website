@@ -10,30 +10,37 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+
 export const Upload = async (req, res) => {
     try {
-        // Ensure a file URL is provided in the request (or modify for file handling)
-        const fileUrl = req.body.fileUrl; // Use this if you're accepting URLs or modify for `req.file.path`
+        // Ensure file URLs are provided in the request body
+        const { fileUrl1, fileUrl2 } = req.body;
 
-        if (!fileUrl) {
-            return res.status(400).json({ message: 'File URL is required' });
+        if (!fileUrl1 || !fileUrl2) {
+            return res.status(400).json({ message: 'Both file URLs are required' });
         }
 
-        // Upload an image to Cloudinary
-        const uploadResult = await cloudinary.uploader.upload(fileUrl, {
+        // Upload the first image to Cloudinary
+        const uploadResult1 = await cloudinary.uploader.upload(fileUrl1, {
             folder: 'websiteUploads',
             resource_type: 'auto',
         });
 
-        // Log and return the upload result
-        console.log(uploadResult);
+        // Upload the second image to Cloudinary
+        const uploadResult2 = await cloudinary.uploader.upload(fileUrl2, {
+            folder: 'websiteUploads',
+            resource_type: 'auto',
+        });
+
+        // Return the results of both uploads
         res.status(200).json({
-            message: 'File uploaded successfully',
-            result: uploadResult,
+            message: 'Files uploaded successfully',
+            result1: uploadResult1,
+            result2: uploadResult2,
         });
 
     } catch (error) {
         console.error('Upload error:', error);
-        res.status(500).json({ message: 'error in upload controller', error: error.message });
+        res.status(500).json({ message: 'Error in upload controller', error: error.message });
     }
 };
