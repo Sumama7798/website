@@ -27,9 +27,48 @@ export const createCard = async (req, res) => {
 
 export const getAllCards = async (req, res) => {
     try {
-        const cards = await Card.find().populate('createdBy','name email');
+        const cards = await Card.find().populate('createdBy','page section');
         res.status(200).json(cards);
     } catch (error) {
         res.status(500).json({ message: 'Failed to fetch cards', error: error.message });
     }
 };  
+
+export const deleteCard = async (req, res) => {
+    const cardId = req.params.id;
+    try {
+        const deletedCard = await Card.findByIdAndDelete(cardId);
+        if (!deletedCard) {
+            return res.status(404).json({ message: 'Card not found' });
+        }
+        res.status(200).json({ message: 'Card deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to delete card', error: error.message });
+    }
+};
+
+export const updateCard = async (req, res) => {
+    const cardId = req.params.id;
+    try {
+        const updatedCard = await Card.findByIdAndUpdate(cardId, req.body, { new: true });
+        if (!updatedCard) {
+            return res.status(404).json({ message: 'Card not found' });
+        }
+        res.status(200).json({ message: 'Card updated successfully', card: updatedCard });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to update card', error: error.message });
+    }
+};
+
+export const getCardsByPage = async (req, res) => {
+    const {page} = req.params;
+    try {
+        const cards = await Card.find({page});
+        if (!cards) {
+            return res.status(404).json({ message: 'Cards not found' });
+        }
+        res.status(200).json(cards);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to fetch card', error: error.message });
+    }
+};

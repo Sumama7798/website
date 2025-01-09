@@ -2,7 +2,7 @@
 .navbar {
   font-weight: bolder;
   font-size: larger;
-  position: sticky;
+  position:relative;
   float: left;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@
   align-items: flex-start;
   z-index: 50;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: width 0.3s ease-in-out; /* Smooth transition for width change */
+  transition: width 0.3s ease-in-out; /* Smooth transition for width change */   
 }
 .navbar.collapsed {
   width: 80px;

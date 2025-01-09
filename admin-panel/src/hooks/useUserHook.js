@@ -15,6 +15,12 @@ export const useUserHook = create((set ,get) => ({
 		} catch (error) {
 			toast.error(error.response.data.message || "An error occurred");
 		}
-	}
+	},
+
+	logout: () => {
+		set({ user: null });
+	},
+
+
 }));
     

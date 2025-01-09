@@ -1,7 +1,8 @@
 import {Route, Routes} from "react-router-dom"
-import HomePage from "./pages/HomePage"
+import DashBoard from "./pages/dashboard/DashBoard"
 import LoginPage from "./pages/LoginPage"
 import SignupPage from "./pages/SignupPage"
+import { useUserHook } from "./hooks/useUserHook"
 
 import Navbar from "./components/Navbar/Navbar"
 import MessagesPage from "./pages/MessagesPage"
@@ -15,9 +16,12 @@ import EdiitBlogPage from "./createPages/editBlogPage/EditBlogPage"
 import EditServicesPage from "./createPages/editServicesPage/EditServicesPage"
 import EditContactPage from "./createPages/editContactPage/EditContactPage"
 import EditFooter from "./createPages/EditFooter/EditFooter"
+import DashBoardPages from "./pages/dashboard/dashboardpages/DashBoardPages"
 
 
 function App() {
+
+  const { user } = useUserHook();
  
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
@@ -33,9 +37,10 @@ function App() {
     < Navbar/>
     <Header/>
         <Routes>
-            <Route path="/" element={<HomePage/>}/>
+            <Route path="/" element={<DashBoard/>}/>
+            <Route path="/dashboard/:page" element={<DashBoardPages/>}/>
             <Route path="/signup" element={<SignupPage/>}/>
-            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/login" element={user ? <DashBoard/> : <LoginPage/>}/>
             <Route path="/messages" element={<MessagesPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/settings" element={<SettingsPage/>}/>

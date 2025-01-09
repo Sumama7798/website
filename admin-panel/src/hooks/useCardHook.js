@@ -1,6 +1,7 @@
 import {create} from 'zustand';
 import toast from 'react-hot-toast';
 import axios from '../lib/axios';
+import { get } from 'mongoose';
 
 
 export const useCardHook = create((set) => ({
@@ -19,6 +20,24 @@ export const useCardHook = create((set) => ({
             toast.error('Failed to create card');
         }
     },
+    getAllCards: async () => {
+        try {
+            const response = await axios.get('/getAllCards', { withCredentials: true });
+            set({ cards: response.data });
+        } catch (error) {
+            toast.error('Failed to fetch cards');
+        }
+    },
+
+    getCardsByPage: async (page) => {
+        try {
+            const response = await axios.get(`/page/${page}`, { withCredentials: true });
+            set({ cards: response.data }); // Update the cards state with the response.data;
+        } catch (error) {
+            toast.error('Failed to fetch cards');
+        }
+    },
+
     uploadImage: async (fileUrl1, fileUrl2) => {
         try {
             // Ensure you pass the correct URLs for the image upload
@@ -30,3 +49,4 @@ export const useCardHook = create((set) => ({
         }
     }
 }));
+
