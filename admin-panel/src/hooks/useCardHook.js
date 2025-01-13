@@ -47,6 +47,17 @@ export const useCardHook = create((set) => ({
             toast.error('Failed to upload image');
             console.error(error);  // Optional: for debugging
         }
-    }
+    },
+
+    updateCard : async (cardId, updatedData) => {
+        try {
+            const response = await axios.put(`/api/cards/${cardId}`, updatedData);
+            console.log('Card updated successfully:', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error updating card:', error.response?.data || error.message);
+            throw error;
+        }
+    },
 }));
 

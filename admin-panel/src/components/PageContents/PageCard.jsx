@@ -49,7 +49,7 @@ const PageCard = ({card}) => {
             Edit
         </button>
 
-        <EditWindow open={open} onClose={() => setOpen(false)}/>
+        <EditWindow open={open} onClose={() => setOpen(false)} cardId={card._id} initialData={card}/>
         </div>
 </div>
   )

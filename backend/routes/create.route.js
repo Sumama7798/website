@@ -2,7 +2,7 @@ import express from 'express'
 
 import { Upload } from '../controllers/upload.controller.js';
 import { getUserProfile } from '../controllers/profile.controller.js';
-import { createCard, getAllCards, getCardsByPage } from '../controllers/card.controller.js';
+import { createCard, getAllCards, getCardsByPage, updateCard } from '../controllers/card.controller.js';
 import { protectRoute, adminRoute } from '../middleware/auth.middleware.js';
 
 
@@ -19,5 +19,7 @@ router.post("/createCard",protectRoute,adminRoute,createCard);
 router.get("/getAllCards",protectRoute,adminRoute, getAllCards);
 
 router.get("/page/:page",protectRoute,adminRoute, getCardsByPage);
+
+router.put("/cards/:id",protectRoute,adminRoute, updateCard);
 
 export default router;

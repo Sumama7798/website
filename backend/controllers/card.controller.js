@@ -50,11 +50,12 @@ export const deleteCard = async (req, res) => {
 export const updateCard = async (req, res) => {
     const cardId = req.params.id;
     try {
-        const updatedCard = await Card.findByIdAndUpdate(cardId, req.body, { new: true });
-        if (!updatedCard) {
+        const updatedData = await Card.findByIdAndUpdate(cardId, req.body, { new: true });
+        
+        if (!updatedData) {
             return res.status(404).json({ message: 'Card not found' });
         }
-        res.status(200).json({ message: 'Card updated successfully', card: updatedCard });
+        res.status(200).json({ message: 'Card updated successfully', card: updatedData });
     } catch (error) {
         res.status(500).json({ message: 'Failed to update card', error: error.message });
     }
