@@ -1,9 +1,24 @@
 import React from 'react';
 import { FolderDot, LogOut, Settings, ChevronDown, ChevronLeft, ChevronRight, Gauge, Mail,User,Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useUserHook } from '../../hooks/useUserHook';
 
 <ChevronDown />
 const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNavbar, isCollapsed, collapseNavbar }) => {
+
+  const { logout } = useUserHook();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+    collapseNavbar();
+  };
+
+
+
+
+
+
   return (
     <header className={`navbar ${isCollapsed ? 'collapsed' : ''} `} >
       <div>
@@ -114,7 +129,7 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNa
           
 
           {/* Log Out button */}
-          <Link to='/login' className='logout-btn mt-auto flex items-center'>
+          <Link to='/login' onClick={handleLogout} className='logout-btn mt-auto flex items-center'>
             <LogOut className='mr-2 w-8 h-8 text-red-500 hover:text-emerald-400' />
             {!isCollapsed && <span className='ml-2'>Logout</span>}  
           </Link>

@@ -51,12 +51,24 @@ export const useCardHook = create((set) => ({
 
     updateCard : async (cardId, updatedData) => {
         try {
-            const response = await axios.put(`/api/cards/${cardId}`, updatedData);
+            const response = await axios.put(`/update/cards/${cardId}`, updatedData, { withCredentials: true });
             console.log('Card updated successfully:', response.data);
             return response.data;
         } catch (error) {
             console.error('Error updating card:', error.response?.data || error.message);
             throw error;
+        }
+    },
+
+    deleteCard: async (cardId) => {
+        try {
+            await axios.delete(`/delete/${cardId}`, { withCredentials: true });
+            set((prevState) => ({
+                cards: prevState.cards.filter((card) => card._id !== cardId)
+            }));
+            toast.success('Card deleted successfully');
+        } catch (error) {
+            toast.error('Failed to delete card');
         }
     },
 }));

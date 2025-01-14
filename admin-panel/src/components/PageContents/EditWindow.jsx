@@ -1,46 +1,28 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { useCardHook } from '../../hooks/useCardHook';
+import { use } from 'react';
 
 const EditWindow = ({ open, onClose, cardId, initialData }) => {
     const { updateCard } = useCardHook();
 
-    const [title, setTitle] = useState(initialData?.title || '');
+    const [heading, setHeading] = useState(initialData?.heading || '');
     const [description, setDescription] = useState(initialData?.description || '');
 
     const handleSubmit = async () => {
         try {
-            const updatedData = { title, description };
-            
-
-            const response = await fetch(`/api/cards/${cardId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedData),
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to update card: ${response.statusText}`);
-            }
-
-            const data = await response.json();
-            updateCard(data);
-            console.log('Card updated successfully:', data);
-
-            // Close the modal after successful submission
+            await updateCard(cardId, { heading, description });
+            window.location.reload();
             onClose();
         } catch (error) {
-            console.error('Error updating card:', error.message);
-            alert('Failed to update card.');
+            console.error('Error updating card:', error);
         }
     };
 
     return (
         <div
             onClick={onClose}
-            className={`relative inset-0 flex justify-center items-center 
+            className={`fixed top-0 left-0 right-0 bottom-0 z-50 min-w-20 flex justify-center items-center 
             transition-colors ${open ? 'visible bg-black/20' : 'invisible'}`}
         >
             <div
@@ -56,8 +38,8 @@ const EditWindow = ({ open, onClose, cardId, initialData }) => {
                 </button>
 
                 <input
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={heading}
+                    onChange={(e) => setHeading(e.target.value)}
                     className="w-full border-b-2 text-black border-gray-400 focus:outline-none focus:border-emerald-400 mb-4"
                     placeholder="Title"
                 />
