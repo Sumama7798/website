@@ -73,3 +73,19 @@ export const getCardsByPage = async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch card', error: error.message });
     }
 };
+
+export const getCardsByAdress = async (req, res) => {
+    const {page,section} = req.params;
+    try {
+        const cards = await Card.find({page,section});
+        if (!cards) {
+            return res.status(404).json({ message: 'Cards not found'});
+
+        }
+
+        res.status(200).json(cards);
+        
+    } catch (error) {
+        res.status(500).json({ message: 'Faild to fetch cards'});
+    }
+}

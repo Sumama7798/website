@@ -8,10 +8,11 @@ const EditWindow = ({ open, onClose, cardId, initialData }) => {
 
     const [heading, setHeading] = useState(initialData?.heading || '');
     const [description, setDescription] = useState(initialData?.description || '');
+    const [image, setImage] = useState(initialData?.image || '');
 
     const handleSubmit = async () => {
         try {
-            await updateCard(cardId, { heading, description });
+            await updateCard(cardId, { heading, description ,image});
             window.location.reload();
             onClose();
         } catch (error) {
@@ -36,6 +37,13 @@ const EditWindow = ({ open, onClose, cardId, initialData }) => {
                 >
                     <X />
                 </button>
+
+                <input
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                    className="w-full border-b-2 text-black border-gray-400 focus:outline-none focus:border-emerald-400 mb-4"
+                    placeholder="Title"
+                />
 
                 <input
                     value={heading}
