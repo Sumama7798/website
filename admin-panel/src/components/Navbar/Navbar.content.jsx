@@ -8,6 +8,7 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNa
 
   const { logout } = useUserHook();
 
+
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -20,7 +21,7 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNa
 
 
   return (
-    <header className={`navbar ${isCollapsed ? 'collapsed' : ''} `} >
+    <header className={`navbar ${isCollapsed ? 'collapsed' : ''}  `} >
       <div>
       <div className='container flex items-center justify-between'>
 
@@ -59,7 +60,7 @@ const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNa
             </button>
             {isDropdownOpen && (
               <div
-                className='dropdown  absolute top-full left-full mt-2 w-60  bg-gray-800 shadow-lg rounded-md'
+                className='z  absolute top-full left-full mt-2 w-60  bg-gray-800 shadow-lg rounded-md'
                 onMouseLeave={closeDropdown}
               >
                 <Link

@@ -39,7 +39,7 @@ function App() {
         {!noNavbarRoutes.includes(location.pathname) && <Navbar />}
         <Header />
         <Routes>
-          <Route path="/" element={user ? <DashBoard /> : <LoginPage />} />
+          <Route path="/" element={!user ? <Navigate to="/login" /> : <DashBoard />} />
           <Route path="/dashboard/:page" element={<DashBoardPages />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />

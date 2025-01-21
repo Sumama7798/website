@@ -2,8 +2,8 @@
 .navbar {
   font-weight: bolder;
   font-size: larger;
-  position:relative;
-  float: left;
+  position: fixed;
+  float: right;
   top: 0;
   left: 0;
   width: 250px; /* Adjust width as needed */
@@ -15,10 +15,12 @@
   align-items: flex-start;
   z-index: 50;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: width 0.3s ease-in-out; /* Smooth transition for width change */   
+  transition: width 0.3s ease-in-out; /* Smooth transition for width change */
+                        
 }
 .navbar.collapsed {
   width: 80px;
+  margin-left: 0;
 }
 
 .navbar .container {
@@ -38,7 +40,7 @@
 .navbar.collapsed a span,
 .navbar.collapsed button span {
   display: none; /* Hide text when collapsed */
-}
+}zz
 
 .navbar .icon-only {
   display: block;

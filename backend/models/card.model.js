@@ -13,6 +13,14 @@ const cardSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    link: {
+        type: String,
+        default: '',
+    },
+    blog: {
+        type: String,
+        default: '',  
+    },
     page: {
         type: String,
         required: true,
