@@ -19,8 +19,16 @@ const cardSchema = new mongoose.Schema({
     },
     blog: {
         type: String,
-        default: '',  
+        default: '', 
+    }, 
+    header: {
+        type: String,
+        default: '',
     },
+    footer: {
+        type: String,
+        default: '',
+    },    
     page: {
         type: String,
         required: true,

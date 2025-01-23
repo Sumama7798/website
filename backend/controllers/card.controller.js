@@ -1,7 +1,8 @@
 import Card from '../models/card.model.js';
 
+
 export const createCard = async (req, res) => {
-    const { image, heading, description ,page ,section ,blog ,link } = req.body;
+    const { image, heading, description ,page ,section ,blog ,link,header,footer } = req.body;
     const userId = req.user.id; // Assume `req.user` is set by `authenticate` middleware
 
     try {
@@ -13,6 +14,8 @@ export const createCard = async (req, res) => {
             section,
             blog,
             link,
+            header,
+            footer,
             createdBy: userId,
         });
 
