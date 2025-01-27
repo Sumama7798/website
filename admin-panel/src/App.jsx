@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import AppRoutes from "./routes";
 
 function App() {
@@ -5,6 +6,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
+
+      <Toaster />
       {/* Background gradient */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0">

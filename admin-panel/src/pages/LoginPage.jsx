@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, Navigate } from "react-router-dom";
 import { LogIn, Mail, Lock, ArrowRight, Loader } from "lucide-react";
 import { useUserHook } from "../hooks/useUserHook";
+import toast from "react-hot-toast";
 
 
 const LoginPage = () => {
@@ -12,10 +13,16 @@ const LoginPage = () => {
 
   const { login } = useUserHook();
 	
-	const handleSubmit = (e) => {
-		e.preventDefault();
-    	login(email, password);			
-	};
+  const handleSubmit = async (e) => {
+	e.preventDefault(); // Prevent form from reloading the page
+  
+	try {
+	  await login(email, password); // Call the login function
+	  toast.success("Logged in successfully"); // Show success toast
+	} catch (error) {
+	  toast.error(error.message || "An error occurred during login"); // Show error toast if login fails
+	}
+  };
 
 
   return (

@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
 import axios from "../lib/axios";
-import { get } from "mongoose";
 
 export const useCardHook = create((set) => ({
   cards: [],
@@ -66,14 +65,10 @@ export const useCardHook = create((set) => ({
           withCredentials: true,
         }
       );
-      console.log("Card updated successfully:", response.data);
+      toast.success("Card updated successfully:");
       return response.data;
     } catch (error) {
-      console.error(
-        "Error updating card:",
-        error.response?.data || error.message
-      );
-      throw error;
+      toast.error("Failed to update card");
     }
   },
 

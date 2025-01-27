@@ -1,18 +1,26 @@
 import React from 'react';
 import { FolderDot, LogOut, Settings, ChevronDown, ChevronLeft, ChevronRight, Gauge, Mail,User,Layers } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUserHook } from '../../hooks/useUserHook';
+import toast from 'react-hot-toast';
+
+
 
 <ChevronDown />
 const NavbarContent = ({ toggleDropdown, isDropdownOpen, closeDropdown, toggleNavbar, isCollapsed, collapseNavbar }) => {
-
+  
+  const navigate = useNavigate();
   const { logout } = useUserHook();
 
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-    collapseNavbar();
+  const handleLogout = async () => {
+    try {
+      await logout(); // Ensure the logout function is awaited if it's asynchronous
+      toast.success('Logout successful');
+      navigate('/login'); // Navigate after successful logout
+    } catch (error) {
+      toast.error(error.message || 'Failed to logout');
+    }
   };
 
 
